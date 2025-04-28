@@ -1,0 +1,64 @@
+/* Sidebar.css */
+
+/* Base Sidebar Styling */
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  background-color: #343a40;
+  color: white;
+  padding: 1.5rem 1rem;
+  position: sticky;
+  top: 0;
+  transition: width 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar .nav-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar .nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-item.text-danger {
+  color: #dc3545;
+}
+
+/* Responsive Sidebar */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    position: relative;
+  }
+
+  .sidebar h4 {
+    font-size: 1rem;
+  }
+
+  .sidebar .nav-item {
+    padding: 0.4rem 0.8rem;
+  }
+}

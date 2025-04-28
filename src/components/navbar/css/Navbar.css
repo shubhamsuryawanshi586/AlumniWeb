@@ -1,0 +1,116 @@
+/* Navbar container styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #2d3748;
+  color: white;
+  min-height: 80px;
+}
+
+.navbar-logo a {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #edf2f7;
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar-links li {
+  display: inline-block;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+.navbar-links a:hover {
+  background-color: #4a5568;
+}
+
+/* Search Bar styles */
+.search-bar {
+  flex-grow: 1;
+  margin-left: 10px; /* Adjust margin to avoid clashing with other elements */
+}
+
+.search-bar input {
+  width: calc(100% - 20px); /* Adjust width for mobile view */
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  background-color: #edf2f7;
+  color: #2d3748;
+  font-size: 1rem;
+}
+
+/* Mobile Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+}
+
+/* Add styles for the logout button */
+.logout-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.logout-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #1f2937;
+    position: absolute;
+    top: 60px; /* Adjust for the height of the navbar */
+    left: 0;
+    padding: 1rem;
+    gap: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navbar-links.show {
+    display: flex;
+    transform: translateX(0); /* Smoothly show the navbar links */
+  }
+
+  .navbar-links li {
+    margin: 10px 0;
+    padding: 10px;
+    text-align: center; /* Ensure the links are centered */
+  }
+
+  .hamburger {
+    display: flex; /* Show hamburger menu on small screens */
+  }
+}

@@ -1,0 +1,91 @@
+.register-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+  }
+  
+  .register-form {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    animation: slideIn 0.5s ease forwards;
+  }
+  
+  .register-form h2 {
+    text-align: center;
+    color: #1f2937;
+  }
+  
+  .register-form input {
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+  }
+  
+  .register-form input:focus {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+  }
+  
+  .register-form button {
+    background-color: #14b8a6;
+    /* color: white; */
+    padding: 0.8rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  /* In your Register.css */
+.login-link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.login-link a {
+  color: #2563eb;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+
+}
+
+.login-link {
+  color: gray;
+  font-weight: bold;
+}
+
+
+  
+  .register-form button:hover {
+    background-color: #0f766e;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  

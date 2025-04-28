@@ -1,0 +1,57 @@
+.home-container {
+  text-align: center;
+  padding: 50px;
+  background-color: #f8f9fa;
+  min-height: 550px;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 40px;
+  color: #343a40;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.login-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.home-btn {
+  padding: 15px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.organizer-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.organizer-btn:hover {
+  background-color: #0056b3;
+}
+
+.alumni-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.alumni-btn:hover {
+  background-color: #218838;
+}
