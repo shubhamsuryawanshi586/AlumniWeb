@@ -3,50 +3,58 @@ import axios from 'axios';
 const API_BASE = 'http://localhost:8080';
 
 class AuthService {
-  // ✅ User Login
-  async Login(email, password) {
+  // ✅ Alumni Login
+  async alumniLogin(email, password) {
     try {
-      const response = await axios.post(`${API_BASE}/login`, { email, password });
-      return response.data; // Return the user object
+      const response = await axios.post(`${API_BASE}/alumni/login`, { email, password });
+      return { ...response.data, role: 'alumni' };
     } catch (error) {
-      throw new Error('Login failed!');
+      throw new Error('Alumni Login failed!');
     }
   }
 
- 
-
-  // ✅ User Registration
-  async userRegister(data) {
+  // ✅ Organizer Login
+  async organizerLogin(email, password) {
     try {
-      const response = await axios.post(`${API_BASE}/register`, data);
+      const response = await axios.post(`${API_BASE}/organizer/login`, { email, password });
+      return { ...response.data, role: 'organizer' };
+    } catch (error) {
+      throw new Error('Organizer Login failed!');
+    }
+  }
+
+  // ✅ Alumni Registration
+  async alumniRegister(data) {
+    try {
+      const response = await axios.post(`${API_BASE}/alumni/register`, data);
       return response.data;
     } catch (error) {
-      console.error('User registration failed:', error);
+      console.error('Alumni registration failed:', error);
       throw error;
     }
   }
 
-  // ✅ Admin Registration
-  async adminRegister(data) {
+  // ✅ Organizer Registration
+  async organizerRegister(data) {
     try {
-      const response = await axios.post(`${API_BASE}/register`, data);
+      const response = await axios.post(`${API_BASE}/organizer/register`, data);
       return response.data;
     } catch (error) {
-      console.error('Admin registration failed:', error);
+      console.error('Organizer registration failed:', error);
       throw error;
     }
   }
 
-  // ✅ Get current logged-in user/admin
+  // ✅ Get Current Account
   getCurrentAccount() {
     try {
-      const admin = JSON.parse(localStorage.getItem('admin'));
-      if (admin) return admin;
+      const organizer = JSON.parse(localStorage.getItem('organizer'));
+      if (organizer) return organizer;
     } catch {}
 
     try {
-      const user = JSON.parse(localStorage.getItem('user'));
-      if (user) return user;
+      const alumni = JSON.parse(localStorage.getItem('alumni'));
+      if (alumni) return alumni;
     } catch {}
 
     return null;
@@ -54,19 +62,19 @@ class AuthService {
 
   // ✅ Logout
   logout() {
-    localStorage.removeItem('user');
-    localStorage.removeItem('admin');
+    localStorage.removeItem('alumni');
+    localStorage.removeItem('organizer');
     window.dispatchEvent(new Event('userChanged'));
-     window.location.reload(); // Refresh the page
+    window.location.reload();
     window.location.href = '/';
   }
 
-  // ✅ Update current account
+  // ✅ Update Current Account
   updateCurrentAccount(updatedData) {
-    if (updatedData.user_role_name === 'Admin') {
-      localStorage.setItem('admin', JSON.stringify(updatedData));
+    if (updatedData.role === 'organizer') {
+      localStorage.setItem('organizer', JSON.stringify(updatedData));
     } else {
-      localStorage.setItem('user', JSON.stringify(updatedData));
+      localStorage.setItem('alumni', JSON.stringify(updatedData));
     }
     window.dispatchEvent(new Event('userChanged'));
   }

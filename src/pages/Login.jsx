@@ -7,35 +7,35 @@ import './css/Login.css';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('alumni'); // ⭐ Role selection
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    if (e.target.name === "email") {
-      setEmail(e.target.value);
-    } else if (e.target.name === "password") {
-      setPassword(e.target.value);
-    }
+    const { name, value } = e.target;
+    if (name === "email") setEmail(value);
+    else if (name === "password") setPassword(value);
+    else if (name === "role") setRole(value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const user = await AuthService.Login(email, password); // Use AuthService
-      console.log(user); // Log user for debugging
-      localStorage.setItem('user', JSON.stringify(user));
-      if (user.role === 'alumni') {
-        Swal.fire('Welcome Alumni..!', 'Login successful', 'success');
-        navigate('/alumni/dashboard'); // Redirect to Alumni Dashboard
-        window.location.reload(); // Refresh the page
-      } else if (user.role === 'organizer') {
+      let user;
+      if (role === 'alumni') {
+        user = await AuthService.alumniLogin(email, password);
+        localStorage.setItem('alumni', JSON.stringify(user));
+        Swal.fire('Welcome Alumni!', 'Login successful', 'success');
+        navigate('/alumni/dashboard');
+      } else if (role === 'organizer') {
+        user = await AuthService.organizerLogin(email, password);
+        localStorage.setItem('organizer', JSON.stringify(user));
         Swal.fire('Welcome Organizer!', 'Login successful', 'success');
-        navigate('/organizer/dashboard'); // Redirect to Organizer Dashboard
-        window.location.reload(); // Refresh the page
+        navigate('/organizer/dashboard');
       }
-
+      window.location.reload();
     } catch (err) {
-      Swal.fire('Login Failed', 'Check credentials', 'error');
+      Swal.fire('Login Failed', 'Please check your credentials.', 'error');
     }
   };
 
@@ -43,6 +43,12 @@ const Login = () => {
     <div className="login-container">
       <form onSubmit={handleSubmit} className="login-form">
         <h2>🎓Login</h2>
+
+        <select name="role" value={role} onChange={handleChange} required>
+          <option value="alumni">Alumni</option>
+          <option value="organizer">Organizer</option>
+        </select>
+
         <input
           type="email"
           name="email"

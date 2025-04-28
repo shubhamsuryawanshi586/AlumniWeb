@@ -1,109 +1,89 @@
-/* General Layout */
-.organizer-dashboard {
-    min-height: 100vh;
-    background-color: #f8f9fa;
-  }
-  
-  /* Sidebar */
-  .sidebar {
-    width: 250px;
-    transition: width 0.3s ease;
-    min-height: 100vh;
-    overflow: hidden;
-  }
-  
-  .sidebar.collapsed {
-    width: 100px;
-  }
-  
-  .sidebar .nav-item {
-    cursor: pointer;
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.event-table-modern {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 16px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.event-table-modern th, 
+.event-table-modern td {
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.event-table-modern thead {
+  background-color: #a9acae;
+  font-weight: bolder;
+}
+
+.event-table-modern thead th {
+  color: #070707;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.event-table-modern tbody tr:hover {
+  background-color: #f1f5f9;
+  transition: background-color 0.3s;
+}
+
+/* Action buttons */
+.table-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.edit-btn, .delete-btn {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-btn {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.edit-btn:hover {
+  background-color: #e0a800;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .event-table-modern th, .event-table-modern td {
     padding: 10px;
-    border-radius: 6px;
-    transition: background 0.2s ease;
-    white-space: nowrap;
   }
-  
-  .sidebar .nav-item:hover {
-    background-color: #495057;
-    color: white;
+
+  .edit-btn, .delete-btn {
+    font-size: 13px;
+    padding: 5px 10px;
   }
-  
-  /* Content Area */
-  .content-area {
-    transition: margin-left 0.3s ease;
-    width: 100%;
+
+  .table-actions {
+    flex-direction: column;
   }
-  
-  .content-area.with-sidebar {
-    margin-left: 250px;
-  }
-  
-  .content-area.full-width {
-    margin-left: 0;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  
-  /* Toggle Button */
-  .toggle-btn {
-    font-size: 1.2rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 991px) {
-    .sidebar {
-      width: 0;
-      display: none;
-    }
-  
-    .sidebar.open {
-      display: block;
-      width: 250px;
-    }
-  
-    .content-area.with-sidebar {
-      margin-left: 0;
-    }
-  
-    .content-area.full-width {
-      margin-left: 0;
-    }
-  
-    .sidebar .nav-item {
-      font-size: 0.9rem;
-    }
-  
-    .sidebar.collapsed {
-      width: 0;
-    }
-  
-    .sidebar.open {
-      display: block;
-      width: 250px;
-    }
-  }
-  
-  @media (max-width: 575px) {
-    .sidebar.collapsed {
-      width: 60px;
-    }
-  
-    .sidebar.open {
-      width: 200px;
-    }
-  
-    .sidebar .nav-item {
-      font-size: 0.8rem;
-    }
-  
-    .content-area {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-  }
-  
+}

@@ -1,8 +1,8 @@
 .home-container {
   text-align: center;
-  padding: 50px;
   background-color: #f8f9fa;
-  min-height: 550px;
+  min-height: 500px;
+  padding: 100px;
 }
 
 h1 {

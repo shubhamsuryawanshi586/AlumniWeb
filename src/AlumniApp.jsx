@@ -9,13 +9,14 @@ import AlumniDashboard from './components/alumni/AlumniDashBoard';
 import UpcomingEvents from './components/alumni/UpcomingEvents';
 import RegisterEvent from './components/alumni/RegisterEvent';
 import PastEvents from './components/alumni/PastEvents';
-// import AlumniProfile from './components/alumni/AlumniProfile';
+import AlumniProfile from './components/alumni/AlumniProfile';
 
 import OrganizerDashboard from './components/organizer/OrganizerDashboard';
 import OrganizerEvents from './components/organizer/OrganizerEvents';
-import OrganizerAlumni from './components/organizer/OrganizerAlumni';
-import OrganizerAttendance from './components/organizer/OrganizerAttendance';
-// import OrganizerProfile from './components/organizer/OrganizerProfile';
+import ManageAlumni from './components/organizer/ManageAlumni';
+import TrackAttendance from './components/organizer/TrackAttendance';
+import OrganizerProfile from './components/organizer/OrganizerProfile';
+import Footer from './pages/Footer';
 
 
 const AlumniApp = () => {
@@ -23,20 +24,20 @@ const AlumniApp = () => {
     <Router>
       <div className="box">
         <Navbar />
-        <div>
+        <div className='l'>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
 
             {/* Alumni Protected Routes */}
-            {/* <Route
+            <Route
               path="/alumni/dashboard"
               element={
                 <ProtectedRoute allowedRoles={['alumni']}>
                   <AlumniDashboard />
                 </ProtectedRoute>
               }
-            /> */}
+            />
             <Route
               path="/alumni/events/upcoming"
               element={
@@ -62,14 +63,14 @@ const AlumniApp = () => {
               }
             />
 
-            {/* <Route
+            <Route
               path="/alumni/profile"
               element={
-                <ProtectedRoute allowedRoles={['organizer']}>
+                <ProtectedRoute allowedRoles={['alumni']}>
                   <AlumniProfile />
                 </ProtectedRoute>
               }
-            /> */}
+            />
 
             {/* Organizer Protected Routes */}
             <Route
@@ -89,40 +90,31 @@ const AlumniApp = () => {
               }
             />
             <Route
-              path="/organizer/alumni"
+              path="/organizer/managealumni"
               element={
                 <ProtectedRoute allowedRoles={['organizer']}>
-                  <OrganizerAlumni />
+                  <ManageAlumni />
                 </ProtectedRoute>
               }
             />
             <Route
-              path="/organizer/attendance"
+              path="/organizer/trackattendance"
               element={
                 <ProtectedRoute allowedRoles={['organizer']}>
-                  <OrganizerAttendance />
+                  <TrackAttendance />
                 </ProtectedRoute>
               }
             />
-            {/* <Route
+            <Route
               path="/organizer/profile"
               element={
                 <ProtectedRoute allowedRoles={['organizer']}>
                   <OrganizerProfile />
                 </ProtectedRoute>
               }
-            /> */}
-
-            {/* Common Protected Route */}
-            {/* <Route
-              path="/profile"
-              element={
-                <ProtectedRoute allowedRoles={['alumni', 'organizer']}>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            /> */}
+            />
           </Routes>
+          <Footer/>
         </div>
       </div>
     </Router>

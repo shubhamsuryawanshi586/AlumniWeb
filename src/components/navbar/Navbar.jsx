@@ -15,7 +15,7 @@ function Navbar() {
   useEffect(() => {
     const updateUser = () => setCurrentUser(AuthService.getCurrentAccount());
     window.addEventListener('userChanged', updateUser);
-    
+
     // Event listener to close navbar on outside click
     const handleClickOutside = (event) => {
       if (navbarRef.current && !navbarRef.current.contains(event.target)) {
@@ -24,7 +24,7 @@ function Navbar() {
     };
 
     window.addEventListener('click', handleClickOutside);
-    
+
     return () => {
       window.removeEventListener('click', handleClickOutside);
       window.removeEventListener('userChanged', updateUser);
@@ -52,12 +52,12 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-3" ref={navbarRef}>
       <Link className="navbar-brand" to="/">🎓 AlumniConnect</Link>
-      <button 
-        className="navbar-toggler" 
-        type="button" 
-        onClick={toggleNavbar} 
-        aria-controls="navbarNav" 
-        aria-expanded={isNavbarOpen ? 'true' : 'false'} 
+      <button
+        className="navbar-toggler"
+        type="button"
+        onClick={toggleNavbar}
+        aria-controls="navbarNav"
+        aria-expanded={isNavbarOpen ? 'true' : 'false'}
         aria-label="Toggle navigation"
       >
         <span className={`navbar-toggler-icon ${isNavbarOpen ? 'active' : ''}`}></span>
@@ -85,7 +85,10 @@ function Navbar() {
                 </button>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/profile">Profile</Link>
+                {/* Conditionally render Profile link based on role */}
+                <Link className="nav-link" to={currentUser.role === 'alumni' ? '/alumni/profile' : '/organizer/profile'}>
+                  Profile
+                </Link>
               </li>
               <li className="nav-item">
                 <button className="btn btn-outline-danger" onClick={handleLogout}>Logout</button>

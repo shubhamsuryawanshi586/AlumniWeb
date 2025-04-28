@@ -7,19 +7,9 @@ const PastEvents = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('user'));
-    if (!storedUser || storedUser.role !== 'alumni') {
-      navigate('/login'); // Redirect to login if the user is not an alumni
-    } else {
-      setUser(storedUser);
-    }
-  }, [navigate]);
-
   return (
-    <div className="organizer-dashboard d-flex">
-    <AlumniSidebar/>
-
+    <div className="dashboard d-flex">
+      <AlumniSidebar/>
       {/* Main content */}
       <div className="content p-4 w-100">
         <h2>✅ Attended/Past Events</h2>
